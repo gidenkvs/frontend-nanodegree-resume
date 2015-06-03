@@ -26,15 +26,15 @@ bio.diplay = function() {
 	var formattedGreeting = HTMLwelcomeMsg.replace("%data%", bio.Welcome);
 	var formattedImg = HTMLbioPic.replace("%data%", bio.bioPic);
 
-	$("#header").append(formattedName);
-	$("#header").append(formattedRole);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
 	$("#topContacts").append(formattedMobile);
 	$("#topContacts").append(formattedEmail);
 	$("#topContacts").append(formattedGithub);
 	$("#topContacts").append(formattedTwitter);
 	$("#topContacts").append(formattedLocation);
-	$("#header").append(formattedGreeting);
 	$("#header").append(formattedImg);
+	$("#header").append(formattedGreeting);
 	$("#footerContacts").append(formattedMobile);
 	$("#footerContacts").append(formattedEmail);
 	$("#footerContacts").append(formattedGithub);
