@@ -182,11 +182,12 @@ span {
   .biopic {
     width: 175px;
   }
-img {
-  padding: 10px;  
-  width: 35%;
-  height: 35%;
-}
+
+  img {
+    padding: 10px;  
+    width: 35%;
+    height: 35%;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -206,39 +207,48 @@ img {
   height: 100%;
   margin-left: 5%;
   margin-right: 5%;
-
 }
+
 #mapDiv {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
 }
+
 @media only screen and (min-width: 750px) {
   #skillsH3,
   .biopic {
     display: block;
   } 
 }
+
 @media only screen and (min-width: 581px) and (max-width: 750px) {
-   #topContacts {
+  #topContacts {
     display: none;
   }
-  #name {font-size: 180%}
+  #name {
+    font-size: 180%
+  }
   img {
-  padding: 10px;  
-  width: 65%;
-  height: 65%;
-}
+    padding: 10px;  
+    width: 65%;
+    height: 65%;
+  } 
 }
 
 @media only screen and (min-width: 320px) and (max-width: 580px) {
    #topContacts {
     display: none;
   }
-  #name {font-size: 180%}
+  #name {
+    font-size: 180%
+  }
   img {
-  padding: 10px;  
-  width: 85%;
-  height: 85%;
+    padding: 10px;  
+    width: 85%;
+    height: 85%;
+  }
+  #header {
+    background-color: #508BC7;
 }
 }

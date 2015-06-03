@@ -9,54 +9,62 @@ var bio = {
 		"twitter": "@fakeAddress",
 		"location": "Salem, OR"
 	}, 
-    "Welcome": "Hello and welcome to my website!",
-    "skills": ["PL/SQl Programer", "Unisys Imaging System Administrator",
-              "OBIEE Developer and Administrator", "Beginer Web Developer"
+    "Welcome": "Hello and Welcome to my website!",
+    "skills": ["PL/SQl Programer", "Unisys Imaging System Administrator", "OBIEE Developer and Administrator", "Beginer Web Developer"
     ],
 	"bioPic": "images/main_img-small.jpg"
+};
+
+bio.diplay = function() {
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+	var formattedGreeting = HTMLwelcomeMsg.replace("%data%", bio.Welcome);
+	var formattedImg = HTMLbioPic.replace("%data%", bio.bioPic);
+
+	$("#header").append(formattedName);
+	$("#header").append(formattedRole);
+	$("#topContacts").append(formattedMobile);
+	$("#topContacts").append(formattedEmail);
+	$("#topContacts").append(formattedGithub);
+	$("#topContacts").append(formattedTwitter);
+	$("#topContacts").append(formattedLocation);
+	$("#header").append(formattedGreeting);
+	$("#header").append(formattedImg);
+	$("#footerContacts").append(formattedMobile);
+	$("#footerContacts").append(formattedEmail);
+	$("#footerContacts").append(formattedGithub);
+	$("#footerContacts").append(formattedTwitter);
+	$("#footerContacts").append(formattedLocation);
+
+	if (bio.skills.length > 0){
+		$("#header").append(HTMLskillsStart);
+
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+		
+		$("#skills").append(formattedSkill);
+
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+		
+	    $("#skills").append(formattedSkill);
+
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+		
+		$("#skills").append(formattedSkill);
+
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+
+		$("#skills").append(formattedSkill);
+
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+	}
 }
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-var formattedGreeting = HTMLwelcomeMsg.replace("%data%", bio.Welcome);
-var formattedImg = HTMLbioPic.replace("%data%", bio.bioPic);
-
-$("#header").append(formattedName);
-$("#header").append(formattedRole);
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedGithub);
-$("#topContacts").append(formattedTwitter);
-$("#topContacts").append(formattedLocation);
-$("#header").append(formattedGreeting);
-$("#header").append(formattedImg);
-
-if (bio.skills.length > 0){
-	$("#header").append(HTMLskillsStart);
-
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	
-    $("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-}
+bio.diplay();
 
 // education
 
@@ -87,10 +95,10 @@ var education = {
 		"url": "http://www.udacity.com"
 	}	
 	]	
-}
+};
 
 education.diplay = function() {
-	for (school in education.schools) {
+	for (var school in education.schools) {
 		$("#education").append(HTMLschoolStart);
 
 		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -110,9 +118,9 @@ education.diplay = function() {
 
 		var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.schools[school].url);
 		$(".education-entry:last").append(formattedOnlineURL);
-	};
+	}
 
-	for (online in education.onlineCourses) {
+	for (var online in education.onlineCourses) {
 		$("#education").append(HTMLschoolStart);
 
 		var formattedSchoolOnlineLocation = HTMLonlineClasses.replace("%data%", education.onlineCourses[online].school);
@@ -157,15 +165,13 @@ var work = {
 		"description": "Multi-unit property maintenance."
 	}
 	]
-}
+};
 
+work.diplay = function() {
+	for (var job in work.jobs) {
 
-function displayWork() {
-	for (job in work.jobs) {
-		// creates new div for workexperience
 		$("#workExperience").append(HTMLworkStart);
-		
-		// concatenates employer and title
+
 	    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 
@@ -183,7 +189,7 @@ function displayWork() {
 	}
 }
 
-displayWork();
+work.diplay();
 
 // projects
 
@@ -205,7 +211,7 @@ var projects = {
 };
 
 projects.diplay = function() {
-	for (project in projects.projects) {
+	for (var project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
 
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -228,10 +234,8 @@ projects.diplay = function() {
 
 projects.diplay();
 
-// international - unable to make it function
-
 function inName(name) {
-    name = name.trim().split(" ");
+    name = bio.name.trim().split(" ");
     console.log(name);
     name[1] = name[1].toUpperCase();
     name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
@@ -239,16 +243,6 @@ function inName(name) {
     return name[0] + " " + name[1];
 }
 
-//$('#main').append(internationalizeButton);
-
-// map
+$('#main').append(internationalizeButton);
 
 $('#mapDiv').append(googleMap);
-
-// footer Contact
-$("#footerContacts").append(formattedMobile);
-$("#footerContacts").append(formattedEmail);
-$("#footerContacts").append(formattedGithub);
-$("#footerContacts").append(formattedTwitter);
-$("#footerContacts").append(formattedLocation);
-
